@@ -26,10 +26,11 @@ jobs:
           rm -rf project
           mkdir project
           unzip -q CallCompass-v0.2-project.zip -d project
-      - name: Fix result list type
+            - name: Fix result list type
         run: |
           FILE="project/app/src/main/java/com/callcompass/app/MainActivity.java"
           sed -i -E 's/(List|ArrayList)<P>([[:space:]]*shown)/\1<R>\2/g' "$FILE"
+          
       - name: Build APK
         run: cd project && gradle assembleDebug
 
